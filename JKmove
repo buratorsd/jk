@@ -583,10 +583,6 @@ local function hTwenty_SERIES()
         flute_track:Play(); hold_track:Play();
         task.wait(100)
         flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
-		local sound = Instance.new("Sound")
-		sound.SoundId = "rbxassetid://18691618631" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
-		sound.Parent = game.Workspace
-		sound:Play()
 	end)
 		
     ----------------------------------------------------
