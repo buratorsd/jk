@@ -1,0 +1,678 @@
+repeat task.wait() until game:IsLoaded()
+print("Loaded")
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChildOfClass('Humanoid')
+local humanoidrootpart = character:FindFirstChild('HumanoidRootPart') or character.PrimaryPart
+local rootjoint = humanoidrootpart:WaitForChild'RootJoint'
+local rootc0 = rootjoint.C0
+player.CharacterAdded:Connect(function()
+    character = player.Character
+    humanoid = character:FindFirstChildOfClass('Humanoid')
+    humanoidrootpart = character:FindFirstChild('HumanoidRootPart') or character.PrimaryPart
+    rootjoint = humanoidrootpart:WaitForChild'RootJoint'
+    rootc0 = rootjoint.C0
+end)
+local active_move = nil
+local function Twenty_SERIES()
+    if active_move then
+        return
+    end
+    active_move = "20 SERIES"
+    local flute_track
+    local hold_track
+    local freezeVelo = true
+    -------------------< animations >-------------------
+        task.spawn(function()
+        task.wait(0)
+        local flute_anim = Instance.new("Animation")
+        flute_anim.AnimationId = "rbxassetid://18445236460"
+        local hold_anim = Instance.new("Animation")
+        hold_anim.AnimationId = "rbxassetid://18445236460"
+        flute_track = humanoid:LoadAnimation(flute_anim)
+        hold_track = humanoid:LoadAnimation(hold_anim)
+        flute_track:Play(); hold_track:Play();
+        task.wait(100)
+        flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
+		local sound = Instance.new("Sound")
+		sound.SoundId = "rbxassetid://18691618631" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+		sound.Parent = game.Workspace
+		sound:Play()
+	end)
+		
+    ----------------------------------------------------
+    -------------------< movement >---------------------
+        --// sorry...
+        task.spawn(function()
+        task.wait(0.2)
+        local TweenService = game:GetService("TweenService")
+        local initial_position = humanoidrootpart.CFrame
+        local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+        local tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(0.75, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        task.wait(0.75)
+        flute_track:Stop(); hold_track:Stop();
+        freezeVelo = false
+        end)
+    ----------------------------------------------------
+    ----------------< rotation >-----------------
+        task.spawn(function()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if not freezeVelo then
+                return
+            end
+            humanoidrootpart.Velocity = Vector3.zero
+        end)
+        local TweenService = game:GetService("TweenService")
+        local tweenInfo = TweenInfo.new(0.18, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+        local tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        task.wait(0.2)
+        humanoidrootpart.CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)
+        tweenInfo = TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+		humanoidrootpart.CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)
+        tweenInfo = TweenInfo.new(4, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)})
+        tween:Play()
+        end)
+    ---------------------------------------------
+    ---------------< general >-------------
+        task.spawn(function()
+        for _, track in pairs(humanoid:GetPlayingAnimationTracks()) do
+            track:Stop()
+        end
+        local org_WalkSpeed = humanoid.WalkSpeed
+        local org_AutoRotate = humanoid.AutoRotate
+        local org_JumpPower = humanoid.JumpPower
+        humanoid.WalkSpeed = 5
+        humanoid.AutoRotate = false
+        humanoid.JumpPower = 0
+        task.wait(3)
+        humanoid.WalkSpeed = org_WalkSpeed
+        humanoid.AutoRotate = org_AutoRotate
+        humanoid.JumpPower = org_JumpPower
+        humanoid.HipHeight = 0
+        active_move = nil
+        end)
+    ---------------------------------------
+end
+local Twenty_SERIES_skill = Instance.new("Tool")
+Twenty_SERIES_skill.Name = "20 SERIES"
+Twenty_SERIES_skill.RequiresHandle = false
+Twenty_SERIES_skill.Parent = player.Backpack
+Twenty_SERIES_skill.Equipped:Connect(function()
+    Twenty_SERIES()
+    task.wait()
+    Twenty_SERIES_skill.Parent = player.Backpack
+end)
+local function stoic_bomb()
+    if active_move then
+        return
+    end
+    active_move = "Stoic Bomb"
+    local flute_track
+    local hold_track
+    local freezeVelo = true
+    -------------------< animations >-------------------
+        task.spawn(function()
+        task.wait(0)
+        local flute_anim = Instance.new("Animation")
+        flute_anim.AnimationId = "rbxassetid://17141153099"
+        local hold_anim = Instance.new("Animation")
+        hold_anim.AnimationId = "rbxassetid://17141153099"
+        flute_track = humanoid:LoadAnimation(flute_anim)
+        hold_track = humanoid:LoadAnimation(hold_anim)
+        flute_track:Play(); hold_track:Play();
+        task.wait(5)
+        flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
+        end)
+		
+    ----------------------------------------------------
+    -------------------< movement >---------------------
+        --// sorry...
+        task.spawn(function()
+        task.wait(0.2)
+        local TweenService = game:GetService("TweenService")
+        local initial_position = humanoidrootpart.CFrame
+        local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+        local tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(0.75, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        task.wait(0.75)
+        flute_track:Stop(); hold_track:Stop();
+        freezeVelo = false
+        end)
+    ----------------------------------------------------
+    ----------------< rotation >-----------------
+        task.spawn(function()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if not freezeVelo then
+                return
+            end
+            humanoidrootpart.Velocity = Vector3.zero
+        end)
+        local TweenService = game:GetService("TweenService")
+        local tweenInfo = TweenInfo.new(0.18, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+        local tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        task.wait(0.2)
+        humanoidrootpart.CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)
+        tweenInfo = TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        end)
+    ---------------------------------------------
+    ---------------< general >-------------
+        task.spawn(function()
+        for _, track in pairs(humanoid:GetPlayingAnimationTracks()) do
+            track:Stop()
+        end
+        local org_WalkSpeed = humanoid.WalkSpeed
+        local org_AutoRotate = humanoid.AutoRotate
+        local org_JumpPower = humanoid.JumpPower
+        humanoid.WalkSpeed = 0
+        humanoid.AutoRotate = false
+        humanoid.JumpPower = 0
+        task.wait(3)
+        humanoid.WalkSpeed = org_WalkSpeed
+        humanoid.AutoRotate = org_AutoRotate
+        humanoid.JumpPower = org_JumpPower
+        humanoid.HipHeight = 0
+        active_move = nil
+        end)
+    ---------------------------------------
+end
+repeat task.wait() until game:IsLoaded()
+print("Loaded")
+
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChildOfClass('Humanoid')
+local humanoidrootpart = character:FindFirstChild('HumanoidRootPart') or character.PrimaryPart
+local rootjoint = humanoidrootpart:WaitForChild('RootJoint')
+local rootc0 = rootjoint.C0
+
+player.CharacterAdded:Connect(function()
+    character = player.Character
+    humanoid = character:FindFirstChildOfClass('Humanoid')
+    humanoidrootpart = character:FindFirstChild('HumanoidRootPart') or character.PrimaryPart
+    rootjoint = humanoidrootpart:WaitForChild('RootJoint')
+    rootc0 = rootjoint.C0
+end)
+
+local active_move = nil
+local function drop_kick()
+    if active_move then
+        return
+    end
+    active_move = "20-20-20 Dropkick"
+    
+    local nearestPlayer = nil
+    local nearestDistance = math.huge
+    if not humanoidrootpart then return end
+
+    for _, plr in ipairs(players:GetPlayers()) do
+        if plr ~= game.Players.LocalPlayer and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+            local targetRootPart = plr.Character.HumanoidRootPart
+            local distance = (humanoidrootpart.Position - targetRootPart.Position).Magnitude
+            if distance < nearestDistance then
+                nearestDistance = distance
+                nearestPlayer = plr
+            end
+        end
+    end
+
+    if not nearestPlayer then return end
+    local target = nearestPlayer.Character
+    if not target then return end
+    if not target:FindFirstChild("Humanoid") then return end
+
+    local TCharacter = target
+    local TRootPart = TCharacter:FindFirstChild("HumanoidRootPart")
+
+    -- Start the animation before moving
+    local anim = Instance.new("Animation")
+    anim.AnimationId = "rbxassetid://17354976067"
+    local track = humanoid:LoadAnimation(anim)
+    track:Play()
+    
+    task.wait(2) -- Wait for 3 seconds before starting to move
+
+    humanoid:MoveTo(TRootPart.Position)
+    humanoid.WalkSpeed = 140
+
+    repeat
+        humanoid.WalkSpeed = 130
+        humanoid:MoveTo(TRootPart.Position)
+        task.wait()
+    until (humanoidrootpart.Position - TRootPart.Position).Magnitude < 5
+
+    -- Stop the animation if the player is touched
+    track:Stop()
+    anim:Destroy()
+
+    -- Continue with the rest of the drop kick logic
+    humanoid:MoveTo(humanoidrootpart.Position)
+    local connection = game:GetService('RunService').RenderStepped:Connect(function()
+        if not humanoidrootpart then return end
+        humanoidrootpart.CFrame = CFrame.new(TRootPart.Position + Vector3.new(0, 1.75, 0) + (TRootPart.CFrame.LookVector * 2.4))
+        local direction = (TRootPart.Position - humanoidrootpart.Position).unit
+        local lookAtCFrame = CFrame.lookAt(humanoidrootpart.Position, TRootPart.Position)
+        humanoidrootpart.CFrame = lookAtCFrame * CFrame.Angles(math.rad(115), math.rad(90), 0)
+        humanoidrootpart.Velocity = Vector3.new(0, 0, 0)
+    end)
+
+    task.wait(4)
+    connection:Disconnect()
+
+    for _, Anim in pairs(humanoid:GetPlayingAnimationTracks()) do
+        Anim:Stop()
+    end
+
+    humanoidrootpart.CFrame = CFrame.new(humanoidrootpart.Position, TRootPart.Position or nil)
+    humanoid.Sit = true
+    task.wait(0)
+    humanoid.Sit = false
+    humanoid.WalkSpeed = 16
+    humanoid.AutoRotate = true
+    humanoid.JumpPower = 50
+    active_move = nil
+end
+
+local drop_kick_skill = Instance.new("Tool")
+drop_kick_skill.Name = "20-20-20 Dropkick"
+drop_kick_skill.RequiresHandle = false
+drop_kick_skill.Parent = player.Backpack
+
+drop_kick_skill.Equipped:Connect(function()
+    task.spawn(drop_kick)
+    task.wait()
+    drop_kick_skill.Parent = player.Backpack
+end)
+
+local stoic_bomb_skill = Instance.new("Tool")
+stoic_bomb_skill.Name = "Stoic Bomb"
+stoic_bomb_skill.RequiresHandle = false
+stoic_bomb_skill.Parent = player.Backpack
+stoic_bomb_skill.Equipped:Connect(function()
+    stoic_bomb()
+    task.wait()
+    stoic_bomb_skill.Parent = player.Backpack
+end)
+repeat task.wait() until game:IsLoaded()
+print("Loaded")
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChildOfClass('Humanoid')
+local humanoidrootpart = character:FindFirstChild('HumanoidRootPart') or character.PrimaryPart
+local rootjoint = humanoidrootpart:WaitForChild'RootJoint'
+local rootc0 = rootjoint.C0
+player.CharacterAdded:Connect(function()
+    character = player.Character
+    humanoid = character:FindFirstChildOfClass('Humanoid')
+    humanoidrootpart = character:FindFirstChild('HumanoidRootPart') or character.PrimaryPart
+    rootjoint = humanoidrootpart:WaitForChild'RootJoint'
+    rootc0 = rootjoint.C0
+end)
+local function five_seasons()
+    if active_move then
+        return
+    end
+    active_move = "Five seasons"
+    local flute_track
+    local hold_track
+    local freezeVelo = true
+    -------------------< animations >-------------------
+        task.spawn(function()
+    	task.wait(0)
+    
+    	local flute_anim = Instance.new("Animation")
+    	flute_anim.AnimationId = "rbxassetid://18462892217"
+    
+    	local hold_anim = Instance.new("Animation")
+    	hold_anim.AnimationId = "rbxassetid://18462894593"
+    
+    	local flute_track = humanoid:LoadAnimation(flute_anim)
+    	local hold_track = humanoid:LoadAnimation(hold_anim)
+    
+    	-- Запуск анимации "flute"
+    	flute_track:Play()
+    
+    	-- Ожидание окончания анимации "flute"
+    	flute_track.Stopped:Wait()
+    
+    	-- Запуск анимации "hold" после завершения анимации "flute"
+    	hold_track:Play()
+    
+    	task.wait(10)
+    
+    	flute_track:AdjustSpeed(0)
+    	hold_track:AdjustSpeed(0)
+	end)
+		
+    ----------------------------------------------------
+    -------------------< movement >---------------------
+        --// sorry...
+        task.spawn(function()
+        task.wait(0.2)
+        local TweenService = game:GetService("TweenService")
+        local initial_position = humanoidrootpart.CFrame
+        local tweenInfo = TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+        local tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(10, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 200, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 200, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+		tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        task.wait(0.75)
+        flute_track:Stop(); hold_track:Stop();
+        freezeVelo = false
+        end)
+    ----------------------------------------------------
+    ----------------< rotation >-----------------
+        task.spawn(function()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if not freezeVelo then
+                return
+            end
+            humanoidrootpart.Velocity = Vector3.zero
+        end)
+        local TweenService = game:GetService("TweenService")
+        local tweenInfo = TweenInfo.new(0.18, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+        local tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(-0), 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        task.wait(0.2)
+        humanoidrootpart.CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(-0), 0, 0)
+        tweenInfo = TweenInfo.new(15, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(-0), 20, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        end)
+    ---------------------------------------------
+    ---------------< general >-------------
+        task.spawn(function()
+        for _, track in pairs(humanoid:GetPlayingAnimationTracks()) do
+            track:Stop()
+        end
+        local org_WalkSpeed = humanoid.WalkSpeed
+        local org_AutoRotate = humanoid.AutoRotate
+        local org_JumpPower = humanoid.JumpPower
+        humanoid.WalkSpeed = 0
+        humanoid.AutoRotate = false
+        humanoid.JumpPower = 0
+        task.wait(3)
+        humanoid.WalkSpeed = org_WalkSpeed
+        humanoid.AutoRotate = org_AutoRotate
+        humanoid.JumpPower = org_JumpPower
+        humanoid.HipHeight = 0
+        active_move = nil
+        end)
+    ---------------------------------------
+end
+
+local five_seasons_skill = Instance.new("Tool")
+five_seasons_skill.Name = "Five Seasons"
+five_seasons_skill.RequiresHandle = false
+five_seasons_skill.Parent = player.Backpack
+five_seasons_skill.Equipped:Connect(function()
+    five_seasons()
+    task.wait()
+    five_seasons_skill.Parent = player.Backpack
+end)
+local function flex_works()
+    if active_move then
+        return
+    end
+    active_move = "Unlimited Flex Works"
+    local flute_track
+    local hold_track
+    local freezeVelo = true
+    -------------------< animations >-------------------
+        task.spawn(function()
+        task.wait(0)
+        local flute_anim = Instance.new("Animation")
+        flute_anim.AnimationId = "rbxassetid://77727115892579"
+        local hold_anim = Instance.new("Animation")
+        hold_anim.AnimationId = "rbxassetid://77727115892579"
+        flute_track = humanoid:LoadAnimation(flute_anim)
+        hold_track = humanoid:LoadAnimation(hold_anim)
+        flute_track:Play(); hold_track:Play();
+        task.wait(34)
+        flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
+        end)
+		
+    ----------------------------------------------------
+    -------------------< movement >---------------------
+        --// sorry...
+        task.spawn(function()
+        task.wait(0.2)
+        local TweenService = game:GetService("TweenService")
+        local initial_position = humanoidrootpart.CFrame
+        local tweenInfo = TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+        local tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(10, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        task.wait(0.75)
+        flute_track:Stop(); hold_track:Stop();
+        freezeVelo = false
+        end)
+    ----------------------------------------------------
+    ----------------< rotation >-----------------
+        task.spawn(function()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if not freezeVelo then
+                return
+            end
+            humanoidrootpart.Velocity = Vector3.zero
+        end)
+        local TweenService = game:GetService("TweenService")
+        local tweenInfo = TweenInfo.new(0.18, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+        local tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(-0), 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        task.wait(0.2)
+        humanoidrootpart.CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(-0), 0, 0)
+        tweenInfo = TweenInfo.new(15, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(-0), 20, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        end)
+    ---------------------------------------------
+    ---------------< general >-------------
+        task.spawn(function()
+        for _, track in pairs(humanoid:GetPlayingAnimationTracks()) do
+            track:Stop()
+        end
+        local org_WalkSpeed = humanoid.WalkSpeed
+        local org_AutoRotate = humanoid.AutoRotate
+        local org_JumpPower = humanoid.JumpPower
+        humanoid.WalkSpeed = 0
+        humanoid.AutoRotate = false
+        humanoid.JumpPower = 0
+        task.wait(3)
+        humanoid.WalkSpeed = org_WalkSpeed
+        humanoid.AutoRotate = org_AutoRotate
+        humanoid.JumpPower = org_JumpPower
+        humanoid.HipHeight = 0
+        active_move = nil
+        end)
+    ---------------------------------------
+end
+
+local flex_works_skill = Instance.new("Tool")
+flex_works_skill.Name = "Unlimited Flex Works"
+flex_works_skill.RequiresHandle = false
+flex_works_skill.Parent = player.Backpack
+flex_works_skill.Equipped:Connect(function()
+    flex_works()
+    task.wait()
+    flex_works_skill.Parent = player.Backpack
+end)
+local function hTwenty_SERIES()
+    if active_move then
+        return
+    end
+    active_move = "honored one"
+    local flute_track
+    local hold_track
+    local freezeVelo = true
+    -------------------< animations >-------------------
+        task.spawn(function()
+        task.wait(0)
+        local flute_anim = Instance.new("Animation")
+        flute_anim.AnimationId = "rbxassetid://18897538537"
+        local hold_anim = Instance.new("Animation")
+        hold_anim.AnimationId = "rbxassetid://18897538537"
+        flute_track = humanoid:LoadAnimation(flute_anim)
+        hold_track = humanoid:LoadAnimation(hold_anim)
+        flute_track:Play(); hold_track:Play();
+        task.wait(100)
+        flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
+		local sound = Instance.new("Sound")
+		sound.SoundId = "rbxassetid://18691618631" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+		sound.Parent = game.Workspace
+		sound:Play()
+	end)
+		
+    ----------------------------------------------------
+    -------------------< movement >---------------------
+        --// sorry...
+        task.spawn(function()
+        task.wait(0.2)
+        local TweenService = game:GetService("TweenService")
+        local initial_position = humanoidrootpart.CFrame
+        local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+        local tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(0.75, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = initial_position + Vector3.new(0, 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        task.wait(0.75)
+        flute_track:Stop(); hold_track:Stop();
+        freezeVelo = false
+        end)
+    ----------------------------------------------------
+    ----------------< rotation >-----------------
+        task.spawn(function()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if not freezeVelo then
+                return
+            end
+            humanoidrootpart.Velocity = Vector3.zero
+        end)
+        local TweenService = game:GetService("TweenService")
+        local tweenInfo = TweenInfo.new(0.18, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+        local tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+        task.wait(0.2)
+        humanoidrootpart.CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)
+        tweenInfo = TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)})
+        tween:Play()
+        tween.Completed:Wait()
+		humanoidrootpart.CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)
+        tweenInfo = TweenInfo.new(4, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+        tween = TweenService:Create(humanoidrootpart, tweenInfo, {CFrame = humanoidrootpart.CFrame * CFrame.Angles(math.rad(0), 0, 0)})
+        tween:Play()
+        end)
+    ---------------------------------------------
+    ---------------< general >-------------
+        task.spawn(function()
+        for _, track in pairs(humanoid:GetPlayingAnimationTracks()) do
+            track:Stop()
+        end
+        local org_WalkSpeed = humanoid.WalkSpeed
+        local org_AutoRotate = humanoid.AutoRotate
+        local org_JumpPower = humanoid.JumpPower
+        humanoid.WalkSpeed = 5
+        humanoid.AutoRotate = false
+        humanoid.JumpPower = 0
+        task.wait(3)
+        humanoid.WalkSpeed = org_WalkSpeed
+        humanoid.AutoRotate = org_AutoRotate
+        humanoid.JumpPower = org_JumpPower
+        humanoid.HipHeight = 0
+        active_move = nil
+        end)
+    ---------------------------------------
+end
+local hTwenty_SERIES_skill = Instance.new("Tool")
+hTwenty_SERIES_skill.Name = "honored one"
+hTwenty_SERIES_skill.RequiresHandle = false
+hTwenty_SERIES_skill.Parent = player.Backpack
+hTwenty_SERIES_skill.Equipped:Connect(function()
+    hTwenty_SERIES()
+    task.wait()
+    hTwenty_SERIES_skill.Parent = player.Backpack
+end)
