@@ -481,18 +481,43 @@ local function five_seasons()
     
     	local hold_anim = Instance.new("Animation")
     	hold_anim.AnimationId = "rbxassetid://18462894593"
-    
+	    
     	local flute_track = humanoid:LoadAnimation(flute_anim)
     	local hold_track = humanoid:LoadAnimation(hold_anim)
     
     	-- Запуск анимации "flute"
     	flute_track:Play()
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://18460863844" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://18460893321" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
     
     	-- Ожидание окончания анимации "flute"
     	flute_track.Stopped:Wait()
     
     	-- Запуск анимации "hold" после завершения анимации "flute"
     	hold_track:Play()
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://18461671633" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://18461820786" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://18461821277" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
     
     	task.wait(10)
     
