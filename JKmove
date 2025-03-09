@@ -33,7 +33,27 @@ local function Twenty_SERIES()
         flute_track = humanoid:LoadAnimation(flute_anim)
         hold_track = humanoid:LoadAnimation(hold_anim)
         flute_track:Play(); hold_track:Play();
-        task.wait(100)
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://18445228136" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://18445228824" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://18445285190" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+        task.wait(5)
+	flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://17150550093" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
 	end)
 		
     ----------------------------------------------------
@@ -136,8 +156,42 @@ local function stoic_bomb()
         flute_track = humanoid:LoadAnimation(flute_anim)
         hold_track = humanoid:LoadAnimation(hold_anim)
         flute_track:Play(); hold_track:Play();
-	
-        end)
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://17149593018" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+        task.wait(0.2)
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://17141392513" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+        task.wait(3)
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://17141392976" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+        task.wait(0.3)
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://17141392676" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+        task.wait(0.5)
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://17141392676" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+        task.wait(1)
+	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://17141392854" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.Parent = game.Workspace
+        sound:Play()
+	end)
 		
     ----------------------------------------------------
     -------------------< movement >---------------------
