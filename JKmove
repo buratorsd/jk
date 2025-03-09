@@ -81,17 +81,17 @@ local function Twenty_SERIES()
         sound.Parent = game.Workspace
         sound:Play()
         task.wait(5)
-	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+	flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
         local sound = Instance.new("Sound")
         sound.SoundId = "rbxassetid://17150550093" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
         sound.Parent = game.Workspace
         sound:Play()
-	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+	flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
         local sound = Instance.new("Sound")
         sound.SoundId = "rbxassetid://17150550093" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
         sound.Parent = game.Workspace
         sound:Play()
-	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+	flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
         local sound = Instance.new("Sound")
         sound.SoundId = "rbxassetid://17150550093" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
         sound.Parent = game.Workspace
@@ -259,17 +259,17 @@ local function stoic_bomb()
         sound.Parent = game.Workspace
         sound:Play()
         task.wait(5)
-	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+	flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
         local sound = Instance.new("Sound")
         sound.SoundId = "rbxassetid://17141392854" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
         sound.Parent = game.Workspace
         sound:Play()
-	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+	flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
         local sound = Instance.new("Sound")
         sound.SoundId = "rbxassetid://17141392854" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
         sound.Parent = game.Workspace
         sound:Play()
-	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
+	flute_track:AdjustSpeed(0); flute_track:AdjustSpeed(0);
         local sound = Instance.new("Sound")
         sound.SoundId = "rbxassetid://17141392854" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
         sound.Parent = game.Workspace
