@@ -492,6 +492,7 @@ local function five_seasons()
         sound.SoundId = "rbxassetid://18460863844" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
         sound.Parent = game.Workspace
         sound:Play()
+    	task.wait(5)
 	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
         local sound = Instance.new("Sound")
         sound.SoundId = "rbxassetid://18460893321" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
@@ -519,7 +520,7 @@ local function five_seasons()
         sound.Parent = game.Workspace
         sound:Play()
     
-    	task.wait(10)
+    	task.wait(5)
     
     	flute_track:AdjustSpeed(0)
     	hold_track:AdjustSpeed(0)
