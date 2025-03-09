@@ -214,13 +214,12 @@ local function stoic_bomb()
         task.wait(1)
 	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
         local sound = Instance.new("Sound")
-        sound.SoundId = "rbxassetid://17141392854" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.SoundId = "rbxassetid://17141392676" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
         sound.Parent = game.Workspace
         sound:Play()
-        task.wait(1)
 	flute_track:AdjustSpeed(1); flute_track:AdjustSpeed(1);
         local sound = Instance.new("Sound")
-        sound.SoundId = "rbxassetid://17141392676" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
+        sound.SoundId = "rbxassetid://17141392854" -- Replace YOUR_SOUND_ID_HERE with the actual sound ID
         sound.Parent = game.Workspace
         sound:Play()
         task.wait(3)
